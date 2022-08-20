@@ -11,8 +11,8 @@ def close():
     conn.close()
     
 def create_table():
-    conn.exexute('DROP TABLE IF EXISTS docs')
-    conn.exuteU('''CREATE TABLE docs (
+    conn.execute('DROP TABLE IF EXISTS docs')
+    conn.execute('''CREATE TABLE docs (
         id        INTEGER PRIMARY KEY AUTOINCREMENT,
         content   TEXT,
         meta_info BLOB,
@@ -23,7 +23,7 @@ def create_table():
 
 def load(values):
     conn.executemany(
-        'INSRT INTO docs (content, meta_info) VALUES (?.?)',
+        'INSERT INTO docs (content, meta_info) VALUES (?,?)',
         values)
     conn.commit()
     
